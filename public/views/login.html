@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Login</title>
+        <link rel="stylesheet" href="../css/login.css"
+    </head>
+    <body>
+        <div id="container-login">
+            <h1 id="h1-login">
+                Login
+            </h1>
+
+            <form id="login">
+                <label for="email">Email</label>
+                <input type="text" name="email" id="login-email"
+                    placeholder="Digite seu email" required>
+                <label for="password">Senha</label>
+                <input type="password" name="password" id="login-password"
+                    placeholder="Digite sua senha" required>
+                <div class="remember-me">
+                    <input type="checkbox" name="remember-me" id="remember-me">
+                    <label for="remember-me">Manter Conectado</label>
+                </div>
+
+            </form>
+            <button type="submit" value="Entrar" id="btn-login">
+                Entrar
+            </button>
+        </div>
+        <script src="../js/auth/login.js"></script>
+    </body>
+</html>
