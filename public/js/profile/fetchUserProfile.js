@@ -1,7 +1,7 @@
 export async function fetchUserProfile(token) {
     try {
-        const response = await fetch('https://6464e0e1-e094-4d7e-8266-7d88cf26279e.mock.pstmn.io/user', {
-            method: 'GET',
+        const response = await fetch('https://374b7935-b9f9-4ddc-ad72-3e9e74e674f1.mock.pstmn.io/user', {
+            method: 'POST',
             headers: {
                 // 'Authorization': `Bearer ${token}`,
                 'Content-Type': 'application/json'

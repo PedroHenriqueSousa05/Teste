@@ -7,9 +7,19 @@ document.addEventListener('DOMContentLoaded', () => {
         const email = document.getElementById('login-email').value;
         const password = document.getElementById('login-password').value;
         const cbRememberMe = document.getElementById('remember-me').checked;
-        const data = await login('/login', {email, password});
 
-        console.log(data);
+        if (!await validateEmail(email)){
+            alert('Por favor, insira um email válido!');
+            return;
+        }
+
+        const passwordStrength = zxcvbn(password)
+        if(passwordStrength.score < 3){
+            alert(`Por favor, escolha uma senha mais forte. score da senha atual: ${passwordStrength.score}`);
+            return;
+        }
+
+        const data = await login('/login', {email, password});
 
         if (data.token){
             if (cbRememberMe){
@@ -33,15 +43,27 @@ document.addEventListener('DOMContentLoaded', () => {
 })
 
 async function login(url = '', data = {}){
-    console.log(JSON.stringify(data));
+    const urlpostman = 'https://374b7935-b9f9-4ddc-ad72-3e9e74e674f1.mock.pstmn.io/login'
+    try{
+        const response = await fetch(urlpostman,{
+            method:"POST",
+            headers:{
+                "Content-Type":"application/json"
+            },
+            body: JSON.stringify(data)
+        });
+        if (!response.ok){
+            throw new Error(`HTTP ERROR! Status: ${response.status}`);
+        }
+        const result = await response.json();
+        return result;
+    }
+    catch(error){
+        console.log("Error:", error);
+    }
+}
 
-    const urlpostman = 'https://6464e0e1-e094-4d7e-8266-7d88cf26279e.mock.pstmn.io/login'
-    const response = await fetch(urlpostman,{
-        method:"POST",
-        headers:{
-            "Content-Type":"application/json"
-        },
-        body: JSON.stringify(data)
-    });
-    return response.json();
+async function validateEmail(email = ''){
+    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return re.test(String(email).toLowerCase());
 }
