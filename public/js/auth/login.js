@@ -21,15 +21,17 @@ document.addEventListener('DOMContentLoaded', () => {
             } else {
                 setSessionCookie('token', data.token);
             }
+        
+            // IMPLEMENTAR SALVAMENTE DE ID DO CLIENTE NOS COOKIES
+            // const profileData = await fetchUserProfile(data.token);
+            // if (profileData) {
+            //     localStorage.setItem('profileData', JSON.stringify(profileData));
+            //     window.location.href = 'telapedidos';
+            // }
+            // else{
+            //     console.log('Falha ao buscar informações do usuario')
+            // }
 
-            const profileData = await fetchUserProfile(data.token);
-            if (profileData) {
-                localStorage.setItem('profileData', JSON.stringify(profileData));
-                window.location.href = 'telapedidos';
-            }
-            else{
-                console.log('Falha ao buscar informações do usuario')
-            }
         } else{
             displayError(`Senha incorreta, informe uma senha válida!`);
         }

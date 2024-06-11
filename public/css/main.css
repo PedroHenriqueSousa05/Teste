@@ -10,14 +10,13 @@ header {
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    background-color: #1e1e1e;
     padding: 10px 20px;
-    color: #ffffff;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    color: #6200ea;
 }
 
 .user-info {
     position: relative;
+    padding: 10px;
 }
 
 #username {
@@ -27,18 +26,35 @@ header {
 
 #dropdown {
     position: absolute;
-    top: 100%;
+    top: 30px;
     right: 0;
-    background-color: #ffffff;
-    border: 1px solid #ddd;
+    background-color: #333;
+    border: 1px solid #6200ea;
     padding: 10px;
     border-radius: 4px;
-    display: none;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    transform: translateY(-10px);
+    cursor: pointer;
+}
+
+.user-info:hover #dropdown{
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
 }
 
 #dropdown a {
     text-decoration: none;
-    color: #6200ea;
+    color: #ffffff;
+    display: block;
+    padding: 5px;
+}
+
+#dropdown a:hover {
+    background-color: #6200ea;
+    border-radius: 3px;
 }
 
 main {
