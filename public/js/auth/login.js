@@ -13,15 +13,9 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
-        const passwordStrength = zxcvbn(password)
-        if(passwordStrength.score < 3){
-            displayError(`Por favor, escolha uma senha mais forte. score da senha atual: ${passwordStrength.score}`);
-            return;
-        }
-
         const data = await login('/login', {email, password});
 
-        if (data.token){
+        if (data.message == 'successful'){
             if (cbRememberMe){
                 setCookie('token', data.token, 7);
             } else {
@@ -37,13 +31,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 console.log('Falha ao buscar informações do usuario')
             }
         } else{
-                console.log('Login failed');
+            displayError(`Senha incorreta, informe uma senha válida!`);
         }
     });
 })
 
 async function login(url = '', data = {}){
-    const urlpostman = 'https://374b7935-b9f9-4ddc-ad72-3e9e74e674f1.mock.pstmn.io/login';
+    const urlpostman = 'https://898d958f-e615-40a6-9a94-384daacc9d77.mock.pstmn.io/login';
     try{
         const response = await fetch(urlpostman,{
             method:"POST",
@@ -52,8 +46,8 @@ async function login(url = '', data = {}){
             },
             body: JSON.stringify(data)
         });
-        if (!response.ok){
-            throw new Error(`HTTP ERROR! Status: ${response.status}`);
+        if (response.status == 404){
+            return 'login failed';
         }
         const result = await response.json();
         return result;

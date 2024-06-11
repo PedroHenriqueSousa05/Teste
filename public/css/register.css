@@ -65,6 +65,7 @@ input:focus{
 }
 
 #btn-register:hover {
+    
     background-color: #3700b3;
 }
 
@@ -75,9 +76,41 @@ input:focus{
 #error-message {
     color: #ff0000;
     border-radius: 5px;
-    margin-bottom: 15px;
-    padding: 10px;
-    margin-top: 10px;
+    margin-bottom: 25px;
     text-align: center;
     font-weight: bold;
+}
+
+/* Estilos para o indicador de força da senha */
+#password-strength {
+    height: 4px;
+    border-radius: 5px;
+    margin-top: -10px;
+    margin-bottom: 10px;
+    transition: width 0.3s ease, background-color 0.3s ease;
+}
+
+.strength-0 {
+    width: 20%;
+    background-color: #ff0000;
+}
+
+.strength-1 {
+    width: 40%;
+    background-color: #ff4000;
+}
+
+.strength-2 {
+    width: 60%;
+    background-color: #ff8000;
+}
+
+.strength-3 {
+    width: 80%;
+    background-color: #00ff00;
+}
+
+.strength-4 {
+    width: 100%;
+    background-color: #00b300;
 }

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="../css/main.css">
+</head>
+<body>
+    <header>
+        <div class="user-info">
+            <span id="username">Usuário</span>
+            <div id="dropdown" class="hidden">
+                <a href="#" id="logout">Logout</a>
+            </div>
+        </div>
+    </header>
+    <main>
+        <div class="top-bar">
+            <h1>Pedidos</h1>
+            <button id="add-order" onclick="window.location.href='add_order.html'">Adicionar Novo Pedido</button>
+        </div>
+        <table id="orders-table">
+            <thead>
+                <tr>
+                    <th>N° do Pedido</th>
+                    <th>Data</th>
+                    <th>Valor</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Aqui irão as linhas dos pedidos -->
+            </tbody>
+        </table>
+    </main>
+    <script src="../js/profile/main.js"></script>
+</body>
+</html>
