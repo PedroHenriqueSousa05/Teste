@@ -11,7 +11,9 @@ body {
     width: 400px;
     margin: 5vh auto;
     padding: 30px;
+    padding-bottom: 1px;
     border-radius: 10px;
+    margin-top: 121.5px;
     text-align: center;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
     opacity: 0.9;
@@ -35,24 +37,27 @@ label, input {
 }
 
 label {
-    font-weight: bold;
+    font-weight: block;
     margin-top: 20px;
 }
 
-input {
-    border: none;
-    padding: 15px;
+input[type="text"],
+input[type="password"] {
+    width: 100%;
+    padding: 10px;
     margin-bottom: 10px;
+    border: none;
     border-radius: 5px;
-    background-color: #333333;
-    color: #ffffff;
+    background-color: #333;
+    color: #fff;
+    outline: none;
+    box-sizing: border-box;
 }
 
-input::placeholder {
-    color: #aaaaaa;
+input[type="checkbox"] {
+    margin-right: 5px;
 }
-
-input:focus {
+input:focus{    
     outline: none;
     border: 1px solid #6200ea;
     background-color: #292929;
@@ -61,7 +66,7 @@ input:focus {
 /* Checkbox Styles */
 .remember-me {
     display: flex;
-    align-items:first baseline;
+    align-items: baseline;
     margin-top: 10px;
 }
 
@@ -71,47 +76,41 @@ input:focus {
     
 }
 
-/* Button Styles */
-button#btn-login {
-    position: relative;
-    padding: 10px 20px;
-    font-size: 16px;
-    text-transform: uppercase;
+#btn-login {
+    width: 100%;
+    padding: 13px;
+    margin-top: 20px;
+    background-color: #6200ea;
+    color: #fff;
     border: none;
     border-radius: 5px;
-    background-color: #6200ea;
-    color: #ffffff;
+    cursor: pointer;
+    text-transform: uppercase;
     cursor: pointer;
     transition: background-color 0.3s;
 }
 
-button#btn-login:hover {
+#btn-login:hover {
     background-color: #3700b3;
-}
-
-button#btn-login span {
-    position: absolute;
-    display: block;
-}
-
-/* Admin Button */
-.admin-button {
-    background-color: #333333;
-    color: #ffffff;
-    border: 1px solid #6200ea;
-    border-radius: 5px;
-    padding: 10px 20px;
-    cursor: pointer;
-    display: none; /* Hidden by default */
-}
-
-.admin-button:hover {
-    background-color: #6200ea;
-    color: #ffffff;
 }
 
 /* Additional Styles */
 h2 {
     margin-top: 20px;
     font-size: 20px;
+}
+
+.hidden {
+    display: none;
+}
+
+#error-message {
+    color: #ff0000;
+    /* border: 1px solid #ff0000; */
+    border-radius: 5px;
+    margin-bottom: 15px;
+    padding: 10px;
+    margin-top: 10px;
+    text-align: center;
+    font-weight: bold;
 }

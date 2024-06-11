@@ -9,13 +9,13 @@ document.addEventListener('DOMContentLoaded', () => {
         const cbRememberMe = document.getElementById('remember-me').checked;
 
         if (!await validateEmail(email)){
-            alert('Por favor, insira um email válido!');
+            displayError('Por favor, insira um email válido!');
             return;
         }
 
         const passwordStrength = zxcvbn(password)
         if(passwordStrength.score < 3){
-            alert(`Por favor, escolha uma senha mais forte. score da senha atual: ${passwordStrength.score}`);
+            displayError(`Por favor, escolha uma senha mais forte. score da senha atual: ${passwordStrength.score}`);
             return;
         }
 
@@ -66,4 +66,13 @@ async function login(url = '', data = {}){
 async function validateEmail(email = ''){
     const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return re.test(String(email).toLowerCase());
+}
+
+function displayError(message) {
+    const errorMessage = document.getElementById('error-message');
+    errorMessage.textContent = message;
+    errorMessage.classList.remove('hidden');
+    setTimeout(() => {
+        errorMessage.classList.add('hidden');
+    }, 3000); // Esconde a mensagem após 3 segundos
 }
