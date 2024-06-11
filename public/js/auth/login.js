@@ -43,7 +43,7 @@ document.addEventListener('DOMContentLoaded', () => {
 })
 
 async function login(url = '', data = {}){
-    const urlpostman = 'https://374b7935-b9f9-4ddc-ad72-3e9e74e674f1.mock.pstmn.io/login'
+    const urlpostman = 'https://374b7935-b9f9-4ddc-ad72-3e9e74e674f1.mock.pstmn.io/login';
     try{
         const response = await fetch(urlpostman,{
             method:"POST",

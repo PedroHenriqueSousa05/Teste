@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Registro</title>
+        <link rel="stylesheet" href="../css/register.css">
+    </head>
+    <body>
+        <div id="container-register">
+            <h1 id="h1-register">Registrar</h1>
+
+            <form id="register">
+                <label for="username">Usuário</label>
+                <input type="text" name="username" id="register-username"
+                    placeholder="Digite seu usuário" required>
+                <label for="email">Email</label>
+                <input type="text" name="email" id="register-email"
+                    placeholder="Digite seu email" required>
+                <label for="password">Senha</label>
+                <input type="password" name="password" id="register-password"
+                    placeholder="Digite sua senha" required>
+                <label for="confirm-password">Confirme a Senha</label>
+                <input type="password" name="confirm-password"
+                    id="register-confirm-password"
+                    placeholder="Confirme sua senha" required>
+                <button type="submit" value="Registrar"
+                    id="btn-register">Registrar</button>
+            </form>
+            <div id="error-message" class="hidden"></div>
+        </div>
+        <script type="module" src="../js/auth/register.js"></script>
+        <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/zxcvbn/4.4.2/zxcvbn.js">
+        </script>
+    </body>
+</html>
