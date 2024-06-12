@@ -1,7 +1,9 @@
-import { fetchUserProfile } from '../profile/fetchUserProfile.js';
 import { setCookie, setSessionCookie } from '../utils/cookies.js';
+import { checkTokenValidity } from '../utils/checkToken.js';
 
 document.addEventListener('DOMContentLoaded', () => {
+    checkTokenValidity();
+
     document.getElementById('login').addEventListener('submit', async function(e){
         e.preventDefault();
         const email = document.getElementById('login-email').value;
@@ -15,22 +17,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const data = await login('/login', {email, password});
 
-        if (data.message == 'successful'){
+        if (data.message == 'Authorized'){
             if (cbRememberMe){
-                setCookie('token', data.token, 7);
+                setCookie('session_token', data.token, 30);
             } else {
-                setSessionCookie('token', data.token);
+                setSessionCookie('session_token', data.token);
             }
         
             // IMPLEMENTAR SALVAMENTE DE ID DO CLIENTE NOS COOKIES
-            // const profileData = await fetchUserProfile(data.token);
-            // if (profileData) {
-            //     localStorage.setItem('profileData', JSON.stringify(profileData));
-            //     window.location.href = 'telapedidos';
-            // }
-            // else{
-            //     console.log('Falha ao buscar informações do usuario')
-            // }
+            window.location.href = '..views/main.html'
 
         } else{
             displayError(`Senha incorreta, informe uma senha válida!`);
@@ -39,7 +34,7 @@ document.addEventListener('DOMContentLoaded', () => {
 })
 
 async function login(url = '', data = {}){
-    const urlpostman = 'https://898d958f-e615-40a6-9a94-384daacc9d77.mock.pstmn.io/login';
+    const urlpostman = 'https://35b2b4b0-fbdf-4ca1-8883-6787d0892ff5.mock.pstmn.io/login';
     try{
         const response = await fetch(urlpostman,{
             method:"POST",

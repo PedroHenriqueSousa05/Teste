@@ -2,11 +2,11 @@ export function setCookie(name, value, days) {
     const date = new Date();
     date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
     const expires = "expires=" + date.toUTCString();
-    document.cookie = name + "=" + value + ";" + expires + ";path=/;Secure";
+    document.cookie = `${name}=${value};${expires};path=/;Secure;HttpOnly;SameSite=Strict`;
 }
 
 export function setSessionCookie(name, value) {
-    document.cookie = name + "=" + value + ";path=/;Secure";
+    document.cookie = name + "=" + value + ";path=/;Secure;HttpOnly;SameSite=Strict";
 }
 
 export function getCookie(name) {

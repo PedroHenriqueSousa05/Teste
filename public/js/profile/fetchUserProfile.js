@@ -3,7 +3,7 @@ export async function fetchUserProfile(token) {
         const response = await fetch('https://898d958f-e615-40a6-9a94-384daacc9d77.mock.pstmn.io/user', {
             method: 'POST',
             headers: {
-                // 'Authorization': `Bearer ${token}`,
+                'Authorization': `Bearer ${token}`,
                 'Content-Type': 'application/json'
             }
         });
