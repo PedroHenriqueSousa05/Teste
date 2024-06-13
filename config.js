@@ -1,5 +1,5 @@
 const config = {
-    apiUrl: 'https://ed28a191-6e4b-49ea-a74d-02e2a0389efa.mock.pstmn.io'
+    apiUrl: 'https://a65df9e3-5d1e-417e-b4fd-1428baf93271.mock.pstmn.io'
 };
 
 export default config;

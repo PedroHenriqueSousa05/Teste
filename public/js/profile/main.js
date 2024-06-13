@@ -3,6 +3,10 @@ import config from '../../../config.js';
 
 document.addEventListener('DOMContentLoaded', async () => {
     const orders = await getOrders();
+    const headers = document.querySelectorAll("th");
+    headers.forEach((header, index) => {
+        header.innerHTML = header.innerText.replace(/ ▲| ▼/g, '') + (sortDirection ? " ▲" : " ▼");
+    });
 
     const logout = document.getElementById('logout');
 
@@ -11,20 +15,28 @@ document.addEventListener('DOMContentLoaded', async () => {
         window.location.href = '../views/login.html';
     });
 
-
-
     const ordersTableBody = document.querySelector('#orders-table tbody');
     orders.forEach(order => {
+        let totalItens = 0;
+        
+        order.pedido.itens.forEach(item => {
+            totalItens += item.valor * item.quantidade;
+        })
+
         const row = document.createElement('tr');
+        const date = new Date(order.pedido.dtcriacao);
+        const formattedDate = `${date.getDate().toString().padStart(2, '0')}/${(date.getMonth() + 1).toString().padStart(2, '0')}/${date.getFullYear()}`;
         row.innerHTML = `
-            <td>${order.pedido_id}</td>
-            <td>${order.data_pedido}</td>
-            <td>R$${order.total}</td>
+            <td>${order.pedido.codigo}</td>
+            <td>${order.pedido.tipopedido}</td>
+            <td>${formattedDate}</td>
+            <td>R$ ${totalItens.toFixed(2)}</td>
+            <td>${order.status}</td>
+            <td>${order.pedido.vendedor.nome}</td>
         `;
         ordersTableBody.appendChild(row);
     });
 });
-
 async function getOrders(){
     const urlpostman = `${config.apiUrl}/Pedido`;
     try{
