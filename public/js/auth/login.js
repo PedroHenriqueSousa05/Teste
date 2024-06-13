@@ -1,5 +1,6 @@
 import { setCookie, setSessionCookie } from '../utils/cookies.js';
 import { checkTokenValidity } from '../utils/checkToken.js';
+import config from '../../../config.js';
 
 document.addEventListener('DOMContentLoaded', () => {
     checkTokenValidity();
@@ -24,8 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 setSessionCookie('session_token', data.token);
             }
         
-            // IMPLEMENTAR SALVAMENTE DE ID DO CLIENTE NOS COOKIES
-            window.location.href = '..views/main.html'
+            window.location.href = '../views/main.html'
 
         } else{
             displayError(`Senha incorreta, informe uma senha válida!`);
@@ -34,7 +34,7 @@ document.addEventListener('DOMContentLoaded', () => {
 })
 
 async function login(url = '', data = {}){
-    const urlpostman = 'https://35b2b4b0-fbdf-4ca1-8883-6787d0892ff5.mock.pstmn.io/login';
+    const urlpostman = `${config.apiUrl}/login`;
     try{
         const response = await fetch(urlpostman,{
             method:"POST",

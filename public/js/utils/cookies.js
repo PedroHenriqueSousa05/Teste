@@ -2,11 +2,11 @@ export function setCookie(name, value, days) {
     const date = new Date();
     date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
     const expires = "expires=" + date.toUTCString();
-    document.cookie = `${name}=${value};${expires};path=/;Secure;HttpOnly;SameSite=Strict`;
+    document.cookie = `${name}=${value};${expires};path=/;Secure;SameSite=Strict`;
 }
 
 export function setSessionCookie(name, value) {
-    document.cookie = name + "=" + value + ";path=/;Secure;HttpOnly;SameSite=Strict";
+    document.cookie = name + "=" + value + ";path=/;Secure;SameSite=Strict";
 }
 
 export function getCookie(name) {
@@ -21,5 +21,5 @@ export function getCookie(name) {
 }
 
 export function eraseCookie(name) {
-    document.cookie = name + '=; Max-Age=-99999999;';
+    document.cookie = `${name}=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/; Secure; SameSite=Strict`;
 }

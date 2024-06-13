@@ -1,7 +1,9 @@
+import config from "../../../config";
+
 export async function fetchUserProfile(token) {
     try {
-        const response = await fetch('https://898d958f-e615-40a6-9a94-384daacc9d77.mock.pstmn.io/user', {
-            method: 'POST',
+        const response = await fetch(`${config.apiUrl}/Usuario`, {
+            method: 'GET',
             headers: {
                 'Authorization': `Bearer ${token}`,
                 'Content-Type': 'application/json'

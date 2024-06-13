@@ -8,17 +8,20 @@
 </head>
 <body>
     <header>
+        <div class="header-left">
+            <h1 id="empresa">InfoDesign</h1>
+        </div>
         <div class="user-info">
             <span id="username">Usuário</span>
             <div id="dropdown">
-                <a onclick="window.location.href =  '../views/login.html'" id="logout">Logout</a>
+                <a href="#" id="logout">Logout</a>
             </div>
         </div>
     </header>
     <main>
         <div class="top-bar">
             <h1>Pedidos</h1>
-            <button id="add-order" onclick="window.location.href='add_order.html'">Adicionar Novo Pedido</button>
+            <button id="add-order" onclick="window.location.href='add_order.html'">Novo Pedido</button>
         </div>
         <table id="orders-table">
             <thead>
@@ -33,6 +36,6 @@
             </tbody>
         </table>
     </main>
-    <script src="../js/profile/main.js"></script>
+    <script type="module" src="../js/profile/main.js"></script>
 </body>
 </html>

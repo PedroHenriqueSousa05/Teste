@@ -1,22 +1,49 @@
-document.addEventListener('DOMContentLoaded', () => {
+import { eraseCookie, getCookie } from '../utils/cookies.js';
+import config from '../../../config.js';
 
-    const orders = [
-        { number: '17458276', date: '2024-06-10', value: 'R$ 150,00' },
-        { number: '17357764', date: '2024-06-11', value: 'R$ 200,00' },
-        { number: '1748282368', date: '2024-06-12', value: 'R$ 250,00' },
-        { number: '17458216', date: '2024-06-10', value: 'R$ 150,00' },
-        { number: '173577123', date: '2024-06-11', value: 'R$ 200,00' },
-        { number: '174828123', date: '2024-06-12', value: 'R$ 250,00' },
-    ];
+document.addEventListener('DOMContentLoaded', async () => {
+    const orders = await getOrders();
+
+    const logout = document.getElementById('logout');
+
+    logout.addEventListener('click', () => {
+        eraseCookie('session_token');
+        window.location.href = '../views/login.html';
+    });
+
+
 
     const ordersTableBody = document.querySelector('#orders-table tbody');
     orders.forEach(order => {
         const row = document.createElement('tr');
         row.innerHTML = `
-            <td>${order.number}</td>
-            <td>${order.date}</td>
-            <td>${order.value}</td>
+            <td>${order.pedido_id}</td>
+            <td>${order.data_pedido}</td>
+            <td>R$${order.total}</td>
         `;
         ordersTableBody.appendChild(row);
     });
 });
+
+async function getOrders(){
+    const urlpostman = `${config.apiUrl}/Pedido`;
+    try{
+        const response = await fetch(urlpostman, {
+            method: 'GET',
+            headers:{
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + getCookie('session_token')
+            }
+        });
+
+        if (!response.ok) {
+            console.log('Error:', response.status);
+        }
+
+        const result = await response.json();
+        return result;
+    }
+    catch(error){
+        console.log("Error:", error);
+    }
+}
