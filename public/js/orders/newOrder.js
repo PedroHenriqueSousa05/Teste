@@ -11,17 +11,26 @@ document.addEventListener('DOMContentLoaded', () => {
             const target = button.getAttribute('data-tab');
 
             tabButtons.forEach(btn => btn.classList.remove('active'));
-            tabContents.forEach(content => content.classList.remove('active'));
-
+            tabContents.forEach(content => {
+                content.classList.remove('active');
+                content.style.height = 0;
+                content.style.display = 'none';
+            });
+            
             button.classList.add('active');
-            document.getElementById(target).classList.add('active');
+            const targetContent = document.getElementById(target);
+            targetContent.style.display = 'block';
+            setTimeout(() => {
+                targetContent.style.height = 'auto';
+                targetContent.classList.add('active');
+            }, 0);
         });
     });
 
-        logout.addEventListener('click', () => {
-            eraseCookie('session_token');
-            window.location.href = '../views/login.html';
-        });
+    logout.addEventListener('click', () => {
+        eraseCookie('session_token');
+        window.location.href = '../views/login.html';
+    });
 
     form.addEventListener('submit', async (event) => {
         event.preventDefault();
@@ -32,7 +41,6 @@ document.addEventListener('DOMContentLoaded', () => {
         const valor = document.getElementById('valor').value;
         const status = document.getElementById('status').value;
         const vendedor = document.getElementById('vendedor').value;
-        
 
         const order = {
             pedido: {

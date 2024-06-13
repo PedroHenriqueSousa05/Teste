@@ -8,7 +8,7 @@
 </head>
 <body>
     <header>
-        <div class="header-left">
+        <div onclick="window.location.href='./main.html'" class="header-left">
             <h1 id="empresa">InfoDesign</h1>
         </div>
         <div class="user-info">
@@ -23,7 +23,6 @@
             <button class="tab-button active" data-tab="order-info">Informações do Pedido</button>
             <button class="tab-button" data-tab="carrier-info">Informações da Transportadora</button>
             <button class="tab-button" data-tab="customer-info">Informações do Cliente</button>
-
         </div>
         <div class="tab-content active" id="order-info">
             <form id="add-order-form">
@@ -81,7 +80,7 @@
                     <label for="customer-name">Nome:</label>
                     <input type="text" id="customer-name" name="customer-name" required>
                 </div>
-                <button type="submit">Salvar Transportadora</button>
+                <button type="submit">Salvar Cliente</button>
             </form>
         </div>
     </main>

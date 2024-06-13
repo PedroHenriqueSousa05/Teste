@@ -18,6 +18,7 @@ header {
 .header-left {
     display: flex;
     align-items: center;
+    cursor: pointer;
 }
 
 #empresa {
@@ -136,8 +137,15 @@ button[type="submit"]:hover {
 
 .tab-content {
     display: none;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+    height: 0;
+    overflow: hidden;
 }
 
 .tab-content.active {
     display: block;
+    opacity: 1;
+    height: auto;
+    overflow: visible;
 }
