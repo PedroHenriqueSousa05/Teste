@@ -8,7 +8,7 @@
 </head>
 <body>
     <header>
-        <div class="header-left">
+        <div onclick="window.location.href='./main.html'" class="header-left">
             <h1 id="empresa">InfoDesign</h1>
         </div>
         <div class="user-info">
@@ -21,7 +21,7 @@
     <main>
         <div class="top-bar">
             <h1>Pedidos</h1>
-            <button id="add-order" onclick="window.location.href='add_order.html'">Novo Pedido</button>
+            <button id="add-order" onclick="window.location.href='./newOrder.html'">Novo Pedido</button>
         </div>
         <table id="orders-table">
             <thead>
@@ -39,7 +39,7 @@
             </tbody>
         </table>
     </main>
-    <script type="module" src="../js/profile/main.js"></script>
+    <script type="module" src="../js/orders/main.js"></script>
     <script src="../js/utils/sort.js"></script>
 </body>
 </html>

@@ -18,7 +18,6 @@ header {
 .header-left {
     display: flex;
     align-items: center;
-    cursor: pointer;
 }
 
 #empresa {
@@ -32,7 +31,6 @@ header {
     display: flex;
     align-items: center;
     padding: 20px;
-    /* background-color: #444; */
     border-radius: 5px;
     cursor: pointer;
 }
@@ -75,71 +73,71 @@ header {
 }
 
 main {
-    padding: 30px;
+    max-width: 600px;
+    margin: 2rem auto;
+    padding: 1rem;
+    background-color: #1b1b1b;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
 }
 
-.top-bar {
+form {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 30px;
+    flex-direction: column;
 }
 
-h1 {
-    color: #ffffff;
-    font-size: 2em;
+.form-group {
+    margin-bottom: 1rem;
 }
 
-#add-order {
-    background-color: #6200ea;
-    color: #ffffff;
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+button[type="submit"] {
+    background-color: #333;
+    color: #fff;
+    border: none;
+    padding: 0.75rem;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+button[type="submit"]:hover {
+    background-color: #555;
+}
+
+.tabs {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 1rem;
+}
+
+.tab-button {
+    background-color: #3b3b3b;
+    color: #fff;
     border: none;
     padding: 10px 20px;
-    border-radius: 5px;
     cursor: pointer;
-    font-weight: bold;
-    transition: background-color 0.3s ease, transform 0.3s ease;
+    border-radius: 4px;
 }
 
-#add-order:hover {
-    background-color: #3700b3;
-    transform: scale(1.05);
+.tab-button.active {
+    background-color: #6200ea;
 }
 
-table {
-    width: 100%;
-    border-collapse: collapse;
-    background-color: #282828;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
-    border-radius: 10px;
-    overflow: hidden;
+.tab-content {
+    display: none;
 }
 
-th, td {
-    padding: 15px;
-    text-align:left;
-    padding-left: 65px;
-    border-bottom: 1px solid #333;
-    cursor: pointer;
-}
-
-th {
-    background-color: #4b01c2;
-    color: #ffffff;
-}
-
-th:first-child {
-    border-top-left-radius: 10px;
-}
-
-th:last-child {
-    border-top-right-radius: 10px;
-}
-
-tbody tr:nth-child(odd) {
-    background-color: #333333;
-}
-
-tbody tr:hover {
-    background-color: #444444;
+.tab-content.active {
+    display: block;
 }
